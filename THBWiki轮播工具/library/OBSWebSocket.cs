@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace THBWiki轮播工具.library
 {
@@ -140,32 +141,40 @@ namespace THBWiki轮播工具.library
             }
         }
 
-        public static void StartStream()
+        public static async void StartStream()
         {
             if (!Connected) return;
 
-            try
+            await Task.Run(() =>
             {
-                _obs.Api.StartStreaming();
-            }
-            catch (Exception ex)
-            {
-                MainWindow.Form.AddInfo(InfoType.ERROR, ex.Message);
-            }
+                try
+                {
+                    MainWindow.Form.AddInfo("向OBS发送开始推流请求");
+                    _obs.Api.StartStreaming();
+                }
+                catch (Exception ex)
+                {
+                    MainWindow.Form.AddInfo(InfoType.ERROR, ex.Message);
+                }
+            });
         }
 
-        public static void StopStream()
+        public static async void StopStream()
         {
             if (!Connected) return;
 
-            try
+            await Task.Run(() =>
             {
-                _obs.Api.StopStreaming();
-            }
-            catch (Exception ex)
-            {
-                MainWindow.Form.AddInfo(InfoType.ERROR, ex.Message);
-            }
+                try
+                {
+                    MainWindow.Form.AddInfo("向OBS发送停止推流请求");
+                    _obs.Api.StopStreaming();
+                }
+                catch (Exception ex)
+                {
+                    MainWindow.Form.AddInfo(InfoType.ERROR, ex.Message);
+                }
+            });
         }
 
         private static void OnStreamData(ObsWebSocket sender, StreamStatus data)

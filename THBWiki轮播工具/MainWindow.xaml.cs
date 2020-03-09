@@ -19,7 +19,7 @@ using THBWiki轮播工具.library;
 namespace THBWiki轮播工具
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// MainWindow.xaml 的交互逻辑
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -57,7 +57,9 @@ namespace THBWiki轮播工具
         {
             App.Current.Dispatcher.Invoke(() =>
             {
-                InfoList.Items.Add(new InfoLine(msg));
+                var item = new InfoLine(msg);
+                InfoList.Items.Add(item);
+                InfoList.ScrollIntoView(item);
             });
         }
 
@@ -127,11 +129,13 @@ namespace THBWiki轮播工具
         private static void BotServerConnected()
         {
             Form?.AddInfo("已连接至Bot Server");
+            Form?.AddInfo("向Bot Server发送轮播状态检查请求");
+            _botServer.SendMessage("###THBWiki Live State Check###");
         }
 
         private static void BotServerMessageReceived(string msg)
         {
-            if (msg == "start")
+            if (msg == "###THBWiki Live Start###")
             {
                 Form?.AddInfo("接收到开始轮播请求");
                 if (SystemWorking && !THBPlaying)
@@ -142,7 +146,7 @@ namespace THBWiki轮播工具
                 }
                 THBPlaying = true;
             }
-            else if (msg == "stop")
+            else if (msg == "###THBWiki Live Stop###")
             {
                 Form?.AddInfo("接收到停止轮播请求");
                 if (SystemWorking && THBPlaying)
@@ -169,7 +173,6 @@ namespace THBWiki轮播工具
         {
             if (BrowserOpen) return;
 
-            AddInfo("开启浏览器");
             BrowserOpen = true;
             BilibiliWebControl.Launch();
         }
@@ -184,7 +187,6 @@ namespace THBWiki轮播工具
                 return;
             }
 
-            AddInfo("关闭浏览器");
             BrowserOpen = false;
             BilibiliWebControl.Shutdown();
         }
@@ -193,7 +195,7 @@ namespace THBWiki轮播工具
         {
             if (SystemWorking) return;
 
-            if (!BrowserOpen)
+            if (!BrowserOpen || !BilibiliWebControl.Launched)
             {
                 AddInfo(InfoType.WARN, "浏览器还未载入，不允许激活轮播系统");
                 return;

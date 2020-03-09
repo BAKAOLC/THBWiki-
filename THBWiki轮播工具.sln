@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THBWiki轮播工具", "THBWiki轮播工具\THBWiki轮播工具.csproj", "{8298D272-EDDC-4A90-AFCE-F92872D2C00C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THBWiki轮播工具", "THBWiki轮播工具\THBWiki轮播工具.csproj", "{2592BEB8-64F5-482D-ABFB-96049305FD80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8298D272-EDDC-4A90-AFCE-F92872D2C00C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8298D272-EDDC-4A90-AFCE-F92872D2C00C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8298D272-EDDC-4A90-AFCE-F92872D2C00C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8298D272-EDDC-4A90-AFCE-F92872D2C00C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2592BEB8-64F5-482D-ABFB-96049305FD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2592BEB8-64F5-482D-ABFB-96049305FD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2592BEB8-64F5-482D-ABFB-96049305FD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2592BEB8-64F5-482D-ABFB-96049305FD80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {78807CFB-8BE6-43EB-9A64-066DBDE3505A}
+		SolutionGuid = {4F87010B-04C3-48BE-8A15-7D6D3302135C}
 	EndGlobalSection
 EndGlobal
