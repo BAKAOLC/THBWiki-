@@ -19,3 +19,6 @@ E:\Github\THBWiki轮播工具\THBWiki轮播工具\obj\Release\THBWiki轮播工�
 E:\Github\THBWiki轮播工具\THBWiki轮播工具\obj\Release\THBWiki轮播工具.csproj.CopyComplete
 E:\Github\THBWiki轮播工具\THBWiki轮播工具\obj\Release\THBWiki轮播工具.exe
 E:\Github\THBWiki轮播工具\THBWiki轮播工具\obj\Release\THBWiki轮播工具.pdb
+E:\Github\THBWiki轮播工具\THBWiki轮播工具\obj\Release\library\InfoViewer.g.cs
+E:\Github\THBWiki轮播工具\THBWiki轮播工具\obj\Release\library\InfoViewer.baml
+E:\Github\THBWiki轮播工具\THBWiki轮播工具\obj\Release\THBWiki轮播工具.csprojAssemblyReference.cache

@@ -37,6 +37,8 @@ namespace THBWiki轮播工具
         private static bool THBPlaying = false;
         private static bool Playing = false;
 
+        private static InfoViewer _infoViewer = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -100,6 +102,13 @@ namespace THBWiki轮播工具
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             _isClosing = true;
+            try
+            {
+                _infoViewer?.Close();
+            }
+            catch
+            {
+            }
             try
             {
                 _botServer?.Dispose();
@@ -225,6 +234,33 @@ namespace THBWiki轮播工具
                 OBSWebSocket.StopStream();
             }
             SystemWorking = false;
+        }
+
+        private void OpenInfoBar(object sender, RoutedEventArgs e)
+        {
+            if (_infoViewer == null)
+            {
+                _infoViewer = new InfoViewer();
+                _infoViewer.Loaded += (_s, _e) =>
+                {
+                    AddInfo("信息面板已激活");
+                };
+                _infoViewer.Closed += (_s, _e) =>
+                {
+                    AddInfo("关闭信息面板");
+                    _infoViewer = null;
+                };
+
+                _infoViewer.Show();
+            }
+
+            try
+            {
+                _infoViewer.Activate();
+            }
+            catch
+            {
+            }
         }
     }
 

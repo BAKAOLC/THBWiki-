@@ -144,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="library\InfoViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,6 +157,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="library\BilibiliWebControl.cs" />
+    <Compile Include="library\InfoViewer.xaml.cs">
+      <DependentUpon>InfoViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="library\OBSWebSocket.cs" />
     <Compile Include="library\WebSocketClient.cs" />
     <Compile Include="MainWindow.xaml.cs">

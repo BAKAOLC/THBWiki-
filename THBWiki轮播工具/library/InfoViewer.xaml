@@ -1,0 +1,41 @@
+﻿<Window x:Class="THBWiki轮播工具.library.InfoViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:THBWiki轮播工具.library"
+        mc:Ignorable="d"
+        Title="InfoViewer" Height="190" Width="750" Closing="Window_Closing">
+	<Grid>
+		<Grid HorizontalAlignment="Left" Width="200">
+			<Label Content="这里是封面" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="20"/>
+			<Image x:Name="VideoImage"/>
+		</Grid>
+		<Grid Margin="200,0,0,0">
+			<Grid Margin="0" Height="70" VerticalAlignment="Top">
+				<Label x:Name="VideoName" Content="这里是视频名称，这么长怎么说应该够摆了吧" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20"/>
+				<Label x:Name="VideoUrl" Content="这里是视频地址" Margin="0,0,120,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="14"/>
+				<Label x:Name="VideoTname" Content="这里是分区" HorizontalAlignment="Right" Margin="0,0,5,0" VerticalAlignment="Bottom"/>
+			</Grid>
+			<Grid Margin="0,70,0,0">
+				<Label Content="播放 :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label x:Name="VideoView" Content="0" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label Content="点赞 :" HorizontalAlignment="Left" Margin="125,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label x:Name="VideoLike" Content="0" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label Content="弹幕 :" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label x:Name="VideoDanmaku" Content="0" HorizontalAlignment="Left" Margin="55,30,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label Content="投币 :" HorizontalAlignment="Left" Margin="125,30,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label x:Name="VideoCoin" Content="0" HorizontalAlignment="Left" Margin="170,30,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label Content="评论 :" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label x:Name="VideoReply" Content="0" HorizontalAlignment="Left" Margin="55,50,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label Content="收藏 :" HorizontalAlignment="Left" Margin="125,50,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label x:Name="VideoFavorite" Content="0" HorizontalAlignment="Left" Margin="170,50,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label Content="分享 :" HorizontalAlignment="Left" Margin="240,50,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label x:Name="VideoShare" Content="0" HorizontalAlignment="Left" Margin="285,50,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label Content="UP :" HorizontalAlignment="Left" Margin="240,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+				<Label x:Name="VideoUploader" Content="这是上传者" Margin="275,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14"/>
+				<Label x:Name="VideoUploaderUrl" Content="这里是UP空间链接" Margin="275,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+			</Grid>
+		</Grid>
+	</Grid>
+</Window>
