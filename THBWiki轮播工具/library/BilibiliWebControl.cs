@@ -26,6 +26,8 @@ namespace THBWiki轮播工具.library
 
         private static Thread _thread = null;
 
+        private const string TargetPage = "https://www.bilibili.com/medialist/play/ml853928275";
+
         public BilibiliWebControl()
         {
         }
@@ -45,7 +47,7 @@ namespace THBWiki轮播工具.library
                 try
                 {
                     driver = new ChromeDriver(driverService);
-                    Goto("https://www.bilibili.com/medialist/play/ml853928275");
+                    Goto(TargetPage);
                     Launched = true;
                     MainWindow.Form.AddInfo(InfoType.INFO, "浏览器启动完毕，现在开始可以激活轮播系统");
                     MainWindow.Form.AddInfo(InfoType.INFO, "如果视频自动播放，请手动暂停");
@@ -64,7 +66,6 @@ namespace THBWiki轮播工具.library
         public static void Goto(string url)
         {
             if (!_isRunning) return;
-
             driver.Navigate().GoToUrl(url);
         }
 
@@ -101,21 +102,63 @@ namespace THBWiki轮播工具.library
 
         public static void PausePlayer()
         {
+            if (!_isRunning) return;
+
             MainWindow.Form.AddInfo(InfoType.INFO, "向浏览器发送播放器暂停指令");
             SendJS("player.pause()");
         }
 
         public static void ResumePlayer()
         {
+            if (!_isRunning) return;
+
             MainWindow.Form.AddInfo(InfoType.INFO, "向浏览器发送播放器播放指令");
             SendJS("player.play()");
+        }
+
+        public static void Refresh()
+        {
+            if (!_isRunning) return;
+
+            try
+            {
+                MainWindow.Form.AddInfo(InfoType.INFO, "向浏览器发送页面刷新指令");
+                driver.Navigate().Refresh();
+                MainWindow.Form.AddInfo(InfoType.INFO, "刷新完毕");
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Form.AddInfo(InfoType.ERROR, ex.Message);
+            }
+        }
+
+        public static void NextVideo()
+        {
+            if (!_isRunning) return;
+
+            MainWindow.Form.AddInfo(InfoType.INFO, "向浏览器发送切换下一视频请求");
+            SendJS("player.next()");
+        }
+
+        public static void SetPart(int part)
+        {
+            if (!_isRunning) return;
+            MainWindow.Form.AddInfo(InfoType.INFO, "向浏览器发送Part跳跃指令");
+            Goto($"{TargetPage}/p{part}");
         }
 
         public static void SendJS(string js)
         {
             if (!_isRunning) return;
 
-            ((IJavaScriptExecutor)driver).ExecuteScript(js);
+            try
+            {
+                ((IJavaScriptExecutor)driver).ExecuteScript(js);
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Form.AddInfo(InfoType.ERROR, ex.Message);
+            }
         }
 
         private static void AutoUpdateVideoInfo()
