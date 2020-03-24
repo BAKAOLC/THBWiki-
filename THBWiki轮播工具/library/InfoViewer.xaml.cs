@@ -44,7 +44,8 @@ namespace THBWiki轮播工具.library
                     try
                     {
                         VideoName.Content = BilibiliWebControl.VideoInfo.Name;
-                        VideoUrl.Content = BilibiliWebControl.VideoInfo.Url;
+                        VideoAV.Content = BilibiliWebControl.VideoInfo.AV;
+                        VideoBV.Content = BilibiliWebControl.VideoInfo.BV;
                         VideoTname.Content = BilibiliWebControl.VideoInfo.Tname;
                         VideoView.Content = BilibiliWebControl.VideoInfo.View;
                         VideoDanmaku.Content = BilibiliWebControl.VideoInfo.Danmaku;
@@ -54,7 +55,7 @@ namespace THBWiki轮播工具.library
                         VideoFavorite.Content = BilibiliWebControl.VideoInfo.Favorite;
                         VideoShare.Content = BilibiliWebControl.VideoInfo.Share;
                         VideoUploader.Content = BilibiliWebControl.VideoInfo.Uploader;
-                        VideoUploaderUrl.Content = BilibiliWebControl.VideoInfo.UploaderUrl;
+                        VideoUploaderUID.Content = $"(UID : {BilibiliWebControl.VideoInfo.UploaderId})";
                         if (BilibiliWebControl.VideoInfo.Pic != null && lastPicUrl != BilibiliWebControl.VideoInfo.Pic)
                         {
                             lastPicUrl = BilibiliWebControl.VideoInfo.Pic;

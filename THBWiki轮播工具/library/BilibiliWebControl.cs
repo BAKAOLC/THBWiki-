@@ -171,7 +171,7 @@ namespace THBWiki轮播工具.library
             }
         }
 
-        private static readonly Regex BiliAVMatch = new Regex("(?<=av)[^/]+");
+        private static readonly Regex BiliBVMatch = new Regex("BV[^/]+");
         public static void UpdateVideoInfo()
         {
             if (!_isRunning) return;
@@ -179,8 +179,8 @@ namespace THBWiki轮播工具.library
             try
             {
                 string url = driver.FindElementByClassName("play-title-location").GetAttribute("href");
-                string av = BiliAVMatch.Match(url).Value;
-                VideoInfo.UpdateInfo(av);
+                string bv = BiliBVMatch.Match(url).Value;
+                VideoInfo.UpdateInfo(bv);
             }
             catch (Exception ex)
             {
@@ -192,9 +192,11 @@ namespace THBWiki轮播工具.library
     class BilibiliVideoInfo
     {
         public string AV { get; private set; }
+        public string BV { get; private set; }
         public string Name { get; private set; }
         public string Pic { get; private set; }
         public string Url { get; private set; }
+        public string UrlAV { get; private set; }
         public string Uploader { get; private set; }
         public string UploaderId { get; private set; }
         public string UploaderUrl { get; private set; }
@@ -217,6 +219,7 @@ namespace THBWiki轮播工具.library
             Pic = null;
             Name = "N/A";
             AV = "N/A";
+            BV = "N/A";
             Url = "N/A";
             Uploader = "N/A";
             UploaderId = "N/A";
@@ -231,21 +234,23 @@ namespace THBWiki轮播工具.library
             Like = "N/A";
         }
 
-        private const string BiliVideoInfoApi = "http://api.bilibili.com/x/web-interface/view?aid=";
-        public async void UpdateInfo(string av)
+        private const string BiliVideoInfoApi = "http://api.bilibili.com/x/web-interface/view?bvid=";
+        public async void UpdateInfo(string bv)
         {
             await Task.Run(() =>
             {
                 try
                 {
-                    string result = HttpGet(BiliVideoInfoApi + av);
+                    string result = HttpGet(BiliVideoInfoApi + bv);
                     if (result != "")
                     {
                         var info = JObject.Parse(result);
-                        AV = av;
+                        AV = "av" + (string)info["data"]["aid"];
+                        BV = bv;
                         Name = (string)info["data"]["title"];
                         Pic = (string)info["data"]["pic"];
-                        Url = $"https://www.bilibili.com/video/av{av}";
+                        Url = $"https://www.bilibili.com/video/{bv}";
+                        UrlAV = $"https://www.bilibili.com/video/av{AV}";
                         Uploader = (string)info["data"]["owner"]["name"];
                         UploaderId = (string)info["data"]["owner"]["mid"];
                         UploaderUrl = $"https://space.bilibili.com/{UploaderId}";
@@ -267,7 +272,7 @@ namespace THBWiki轮播工具.library
             });
         }
 
-        public void UpdateInfo(int av) => UpdateInfo(av.ToString());
+        public void UpdateInfo(int bv) => UpdateInfo(bv.ToString());
 
         private static string HttpGet(string Url, string postDataStr = "", long timeout = 5000,
             string cookie = "")
@@ -317,7 +322,7 @@ namespace THBWiki轮播工具.library
 
         public override string ToString()
         {
-            return $@"{Name} av{AV}({Url})
+            return $@"{Name} av{BV}({Url})
 分区: {Tname} UP: {Uploader}({UploaderUrl})
 播放量: {View} 弹幕: {Danmaku} 评论：{Reply} 收藏: {Favorite} 投币: {Coin} 分享: {Share} 点赞: {Like}";
         }

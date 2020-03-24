@@ -14,7 +14,8 @@
 		<Grid Margin="200,0,0,0">
 			<Grid Margin="0" Height="70" VerticalAlignment="Top">
 				<Label x:Name="VideoName" Content="这里是视频名称，这么长怎么说应该够摆了吧" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="20"/>
-				<Label x:Name="VideoUrl" Content="这里是视频地址" Margin="0,0,120,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="14"/>
+				<Label x:Name="VideoAV" Content="这里是视频AV号" Margin="-50,0,120,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="14"/>
+				<Label x:Name="VideoBV" Content="这里是视频BV号" Margin="250,0,120,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="14"/>
 				<Label x:Name="VideoTname" Content="这里是分区" HorizontalAlignment="Right" Margin="0,0,5,0" VerticalAlignment="Bottom"/>
 			</Grid>
 			<Grid Margin="0,70,0,0">
@@ -34,7 +35,7 @@
 				<Label x:Name="VideoShare" Content="0" HorizontalAlignment="Left" Margin="285,50,0,0" VerticalAlignment="Top" FontSize="14"/>
 				<Label Content="UP :" HorizontalAlignment="Left" Margin="240,10,0,0" VerticalAlignment="Top" FontSize="14"/>
 				<Label x:Name="VideoUploader" Content="这是上传者" Margin="275,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14"/>
-				<Label x:Name="VideoUploaderUrl" Content="这里是UP空间链接" Margin="275,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+				<Label x:Name="VideoUploaderUID" Content="这是上传者UID" Margin="275,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14"/>
 			</Grid>
 		</Grid>
 	</Grid>
